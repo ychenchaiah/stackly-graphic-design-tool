@@ -6,7 +6,7 @@ const Header = () => {
     <header className="app-header">
       <div className="header-left">
         <Link to="/" className="logo">
-          <span className="logo-text">Stackly</span>
+          <span className="logo-text">Stackly-Tool</span>
         </Link>
       </div>
 

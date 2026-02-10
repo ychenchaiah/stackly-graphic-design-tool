@@ -7,6 +7,7 @@
   background: #f5f6fa;
   padding: 32px 48px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  padding-top: 10%;
 }
 
 /* =========================
@@ -14,7 +15,11 @@
 ========================= */
 
 .auth-top {
-  margin-bottom: 40px;
+
+  max-width: 1200px;
+  margin: 0 auto 40px auto;  
+  padding-left: 0; 
+
 }
 
 .auth-logo {
@@ -25,6 +30,7 @@
   font-size: 18px;
   font-weight: 600;
   color: #111827;
+  margin-left: 2px;
 }
 
 .logo-box {
@@ -69,7 +75,7 @@
 
 .auth-left {
   flex-direction: column;
-  align-items: stretch; /* form full width */
+  align-items: stretch; 
   padding: 30px;              
 
 }
@@ -99,7 +105,7 @@
   -moz-appearance: none;
 
   width: 100%;
-  padding: 12px 44px 12px 16px; /* right side space for arrow */
+  padding: 12px 44px 12px 16px; 
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   font-size: 14px;
@@ -122,25 +128,21 @@
 }
 
 
-/* =========================
-   SELECT OPTIONS STYLE
-========================= */
-
 .auth-left select option {
-  background-color: #f8fafc;   /* 🌿 grassy white */
+  background-color: #f8fafc;   
   color: #111827;
   font-size: 14px;
   padding: 12px;
 }
 
-/* Hover (Chrome / Edge support) */
+
 .auth-left select option:hover {
-  background-color: #eef2ff;   /* soft blue tint */
+  background-color: #eef2ff;   
 }
 
 /* Selected option */
 .auth-left select option:checked {
-  background-color: #e0e7ff;   /* selected state */
+  background-color: #e0e7ff;   
   color: #1e3a8a;
 }
 
@@ -247,13 +249,6 @@
     margin-top: 30px;
 }
 
-
-/* =========================
-   RIGHT PREVIEW (FIGMA STYLE)
-========================= */
-
-
-
 .auth-right {
   position: relative;
   padding: 40px;              
@@ -268,7 +263,8 @@
 
 
 /* Image Cards */
-.canvas-item {
+.canvas-item,
+.canvas-item-secondary {
   position: absolute;
   background: white;
   border-radius: 14px;
@@ -276,53 +272,90 @@
   overflow: visible;
 }
 
-.canvas-item img {
+/* Selection outline */
+.canvas-item::before {
+  content: "";
+  position: absolute;
+  inset: -7px;                 /* outline gap */
+  border: 2px solid #040404;   /* Figma blue */
+  pointer-events: none;
+  z-index: 5;
+}
+
+
+
+
+.canvas-item-secondary::before {
+  content: "";
+  position: absolute;
+  inset: -7px;                 /* outline gap */
+  border: 2px solid #4f7cff;   /* Figma blue */
+  pointer-events: none;
+  z-index: 5;
+}
+
+.canvas-item img,
+.canvas-item-secondary img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
+  z-index: 1;
 }
 
+
 /* Main image */
-.canvas-item.main {
+.canvas-item.main,
+.canvas-item-secondary.main {
   width: 260px;
   height: 300px;
   top: 50px;
   transform: rotate(-2deg);
 
-  /* left: 60px; */
+  
 }
 
 /* Secondary image */
-.canvas-item.secondary {
+.canvas-item-secondary.secondary {
   width: 120px;
   height: 220px;
   top: 90px;
   right: 70px;
   transform: rotate(12deg);
-  border: 2px solid #4f7cff;
 }
 
-/* Selection Handles */
+
 .handle {
   position: absolute;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   background: #ffffff;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 50%;
-
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  z-index: 10;
+  z-index: 10; /* above outline */
 }
 
-/* Positions */
-.handle.tl { top: -7px; left: -7px; }
-.handle.tr { top: -7px; right: -7px; }
-.handle.bl { bottom: -7px; left: -7px; }
-.handle.br { bottom: -7px; right: -7px; }
 
-/* =========================
-   GLASSMORPHISM TOOLTIP
-========================= */
+/* Positions */
+.handle.tl,.handle-secondary.tl { top: -18px; left: -18px; }
+.handle.tr,.handle-secondary.tr { top: -18px; right: -18px; }
+.handle.bl,.handle-secondary.bl { bottom: -18px; left: -18px; } 
+.handle.br,.handle-secondary.br { bottom: -18px; right: -18px; }
+
+
+.handle-secondary{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border: 2px solid #4f7cff;
+  border-radius: 50%;
+  z-index: 10; 
+}
+
+
+
+
 
 .collab-tooltip {
   position: absolute;
@@ -333,7 +366,7 @@
   width: 310px;
   padding: 20px 20px 22px;
 
-  /* 🪟 Transparent glass */
+  /*  Transparent glass */
  background: linear-gradient(180deg, rgb(235 235 235 / 55%) 0%, rgba(255, 255, 255, 0.35) 100%);
 
   backdrop-filter: blur(18px);
