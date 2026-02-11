@@ -3,10 +3,12 @@ import Header from "./components/layout/Header";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import Home from "./Home";
+import Otp from "./components/auth/Otp";
+
 
 function Layout() {
   const location = useLocation();
-  const hideHeaderRoutes = ["/login", "/signup"];
+  const hideHeaderRoutes = ["/login", "/signup","/otp"];
 
   return (
     <>
@@ -16,6 +18,8 @@ function Layout() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/otp" element={<Otp />} />
+
       </Routes>
     </>
   );
